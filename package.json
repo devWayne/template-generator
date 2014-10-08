@@ -14,7 +14,7 @@
   "h5bp-configs": {
     "directories": {
       "archive": "archive",
-      "tempalte": "template",
+      "template": "template",
       "dist": "dist"
     }
   },

@@ -13,6 +13,9 @@ var template = require('lodash').template;
 var pkg = require('./package.json');
 var dirs = pkg['h5bp-configs'].directories;
 
+var config=require('./config.js');
+
+
 
 gulp.task('archive:create_archive_dir', function () {
     fs.mkdirSync(path.resolve(dirs.archive), '0755');
@@ -61,7 +64,6 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('copy', [
-    'copy:jquery',
     'compile:less',
     'compile:index.jade',
 ]);
@@ -69,8 +71,7 @@ gulp.task('copy', [
 
 gulp.task('compile:index.jade', function () {
     return gulp.src(template('<%= template %>/index.jade', dirs))
-               .pipe(jade())
-               .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
+               .pipe(jade({locals:config.config,pretty: true}))
                .pipe(gulp.dest(template('<%= dist %>', dirs)));
 });
 
