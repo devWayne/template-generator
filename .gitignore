@@ -65,6 +65,7 @@ npm-debug.log
 
 # Other #
 #########
+dist/
 test/*.2
 test/*/*.2
 test/*.mp4
